@@ -46,12 +46,11 @@ class MusicCard extends React.Component {
       this.shouldLoading(true);
       await addSong(data);
       this.setState({ loading: false, checked: true });
-    } else if (checked) {
+    } else {
       this.shouldLoading(true);
       await removeSong(data);
       this.setState({ loading: false, checked: false });
     }
-    this.showFavorites();
   }
 
   render() {

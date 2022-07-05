@@ -34,7 +34,7 @@ class Header extends React.Component {
             <span
               data-testid="header-user-name"
             >
-              { username.name }
+              { username.name.toUpperCase() }
             </span>
             <div className="links-container">
               <Link

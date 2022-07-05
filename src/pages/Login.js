@@ -12,7 +12,8 @@ class Home extends React.Component {
     };
   }
 
-  handleClick = async () => {
+  handleClick = async (e) => {
+    e.preventDefault();
     const { nome } = this.state;
     const { history } = this.props;
     this.setState({ loading: true });
@@ -24,7 +25,7 @@ class Home extends React.Component {
     const { nome, loading } = this.state;
     return (
       <div data-testid="page-login">
-        <form>
+        <form onSubmit={ this.handleClick }>
           <input
             type="text"
             name="name"
