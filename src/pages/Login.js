@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropType from 'prop-types';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 
@@ -50,7 +50,7 @@ class Home extends React.Component {
 }
 
 Home.propTypes = {
-  history: PropTypes.arrayOf(PropTypes.func).isRequired,
+  history: PropType.objectOf(PropType.any).isRequired,
 };
 
 export default Home;
