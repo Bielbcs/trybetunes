@@ -1,0 +1,28 @@
+.header-container {
+  align-items: center;
+  background-color: green;
+  color: white;
+  display: flex;
+  flex: 2;
+  height: 50px;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.links-container {
+  align-items: center;
+  display: flex;
+  height: 2em;
+  justify-content: space-evenly;
+  width: 40%;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.link:hover {
+  background-color: darkgreen;
+  border-radius: 4px;
+}
