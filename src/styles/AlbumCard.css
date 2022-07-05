@@ -1,0 +1,26 @@
+.album-card-container {
+  border-radius: 4px;
+  box-shadow: 2px 2px 2px 2px gray;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  padding: 4px;
+  text-decoration: none;
+  width: 200px;
+}
+
+.album-card-container img {
+  width: 100%;
+}
+
+.album-name {
+  color: #444;
+  font-size: 12pt;
+}
+
+.name {
+  color: #222;
+  font-size: 14pt;
+}
