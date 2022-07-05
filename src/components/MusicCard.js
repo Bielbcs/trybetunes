@@ -1,7 +1,7 @@
 import React from 'react';
 import PropType from 'prop-types';
 import '../styles/MusicCard.css';
-import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 class MusicCard extends React.Component {
@@ -18,8 +18,12 @@ class MusicCard extends React.Component {
     this.showFavorites();
   }
 
+  shouldLoading = (param) => {
+    this.setState({ loading: param });
+  }
+
   showFavorites = async () => {
-    this.setState({ loading: true });
+    this.shouldLoading(true);
     await this.getFavorites();
     const { favorites } = this.state;
     const { data } = this.props;
@@ -27,7 +31,7 @@ class MusicCard extends React.Component {
     if (favorites.some((item) => item.trackId === trackId)) {
       this.setState({ checked: true });
     }
-    this.setState({ loading: false });
+    this.shouldLoading(false);
   }
 
   getFavorites = async () => {
@@ -35,12 +39,17 @@ class MusicCard extends React.Component {
     this.setState({ favorites: result });
   }
 
-  handleCheckboxChange = async (e) => {
+  handleCheckboxChange = async () => {
     const { data } = this.props;
-    if (e.target.checked) {
-      this.setState({ loading: true });
+    const { checked } = this.state;
+    if (!checked) {
+      this.shouldLoading(true);
       await addSong(data);
       this.setState({ loading: false, checked: true });
+    } else if (checked) {
+      this.shouldLoading(true);
+      await removeSong(data);
+      this.setState({ loading: false, checked: false });
     }
     this.showFavorites();
   }
