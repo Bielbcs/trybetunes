@@ -1,6 +1,6 @@
 import React from 'react';
-import Header from '../components/Header';
 import FavoriteMusic from '../components/FavoriteMusic';
+import Loading from '../components/Loading';
 import { getFavoriteSongs } from '../services/favoriteSongsAPI';
 
 class Favorites extends React.Component {
@@ -22,16 +22,16 @@ class Favorites extends React.Component {
   }
 
   getFavorites = async () => {
+    this.setState({ loading: true });
     const result = await getFavoriteSongs();
-    this.setState({ favorites: result });
+    this.setState({ favorites: result, loading: false });
   }
 
   render() {
     const { favorites, checked, loading } = this.state;
     return (
       <div data-testid="page-favorites">
-        <Header />
-        {loading ? (<h1>Carregando...</h1>) : (
+        {loading ? <Loading /> : (
           <div>
             {favorites.map((favorite) => (<FavoriteMusic
               key={ favorite.trackId }

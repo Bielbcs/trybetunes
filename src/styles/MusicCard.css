@@ -1,6 +1,19 @@
 .music-card-container {
   align-items: center;
   display: flex;
+  margin-right: 20px;
+  width: auto;
+}
+
+.checkbox-music {
+  cursor: pointer;
+  position: relative;
+}
+
+.checkbox-music input {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
 }
 
 .music-card-container p {

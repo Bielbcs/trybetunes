@@ -3,6 +3,8 @@ import PropType from 'prop-types';
 import '../styles/MusicCard.css';
 import { addSong, getFavoriteSongs, removeSong } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
+import svg from '../svg/suit-heart.svg';
+import svg1 from '../svg/suit-heart-fill.svg';
 
 class MusicCard extends React.Component {
   constructor() {
@@ -69,10 +71,14 @@ class MusicCard extends React.Component {
               .
             </audio>
             {loading ? <Loading /> : (
-              <label htmlFor="favorita">
-                Favorita
+              <label htmlFor={ trackId } className="checkbox-music">
+                <span className="visually-hidden">Favorita</span>
+                {checked ? (<img src={ svg1 } alt="teste" />) : (
+                  <img src={ svg } alt="teste" />
+                )}
                 <input
                   name="favorita"
+                  id={ trackId }
                   data-testid={ `checkbox-music-${trackId}` }
                   type="checkbox"
                   checked={ checked }

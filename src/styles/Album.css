@@ -10,7 +10,8 @@
   border-radius: 7px;
   box-shadow: 2px 2px 4px 4px gray;
   display: flex;
-  padding: 10px;
+  padding: 20px;
+  width: auto;
 }
 
 .album-info {
@@ -37,6 +38,7 @@
 
 .musics {
   height: 400px;
+  overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
 }

@@ -7,6 +7,7 @@ import Album from './pages/Album';
 import Favorites from './pages/Favorites';
 import ProfileEdit from './pages/ProfileEdit';
 import NotFound from './pages/NotFound';
+import Header from './components/Header';
 
 class App extends React.Component {
   render() {
@@ -14,6 +15,9 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/" component={ Login } />
+          <Route path="/" render={ (props) => <Header { ...props } /> } />
+        </Switch>
+        <Switch>
           <Route path="/search" component={ Search } />
           <Route path="/album/:id" component={ Album } />
           <Route path="/favorites" component={ Favorites } />

@@ -1,6 +1,8 @@
 import React from 'react';
 import PropType from 'prop-types';
 import { removeSong } from '../services/favoriteSongsAPI';
+import svg from '../svg/suit-heart.svg';
+import svg1 from '../svg/suit-heart-fill.svg';
 
 class FavoriteMusic extends React.Component {
   remove = async () => {
@@ -26,8 +28,11 @@ class FavoriteMusic extends React.Component {
             .
           </audio>
 
-          <label htmlFor="Favorita">
-            Favorita
+          <label htmlFor="Favorita" className="checkbox-music">
+            {checked ? (<img src={ svg1 } alt="teste" />) : (
+              <img src={ svg } alt="teste" />
+            )}
+            <span className="visually-hidden">Favorita</span>
             <input
               name="Favorita"
               id="Favorita"

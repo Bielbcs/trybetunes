@@ -1,5 +1,4 @@
 import React from 'react';
-import Header from '../components/Header';
 import Loading from '../components/Loading';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import AlbumCard from '../components/AlbumCard';
@@ -38,24 +37,30 @@ class Search extends React.Component {
     const { search, albumList, loading, searched, prevState } = this.state;
     const randomNumber = 1000;
     return (
-      <div data-testid="page-search">
-        <Header />
+      <div data-testid="page-search" className="search-general-container">
         {loading ? <Loading /> : (
-          <form onSubmit={ this.handleSearch }>
-            <input
-              type="text"
-              value={ search }
-              data-testid="search-artist-input"
-              onChange={ (e) => this.setState({ search: e.target.value }) }
-            />
-            <button
-              type="button"
-              data-testid="search-artist-button"
-              disabled={ search.length < 2 }
-              onClick={ this.handleSearch }
-            >
-              Pesquisar
-            </button>
+          <form onSubmit={ this.handleSearch } className="search-form-container">
+            <div className="search-container">
+              <h4>Pesquise um artista:</h4>
+              <div className="inputs">
+                <input
+                  type="text"
+                  value={ search }
+                  className="form-control"
+                  data-testid="search-artist-input"
+                  onChange={ (e) => this.setState({ search: e.target.value }) }
+                />
+                <button
+                  type="button"
+                  className="btn btn-success"
+                  data-testid="search-artist-button"
+                  disabled={ search.length < 2 }
+                  onClick={ this.handleSearch }
+                >
+                  Pesquisar
+                </button>
+              </div>
+            </div>
           </form>
         )}
         {(searched && !loading && albumList.length > 0) && (
