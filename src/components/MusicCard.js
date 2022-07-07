@@ -18,10 +18,18 @@ class MusicCard extends React.Component {
 
   componentDidMount() {
     this.showFavorites();
+    this.setAudioVolume();
   }
 
   shouldLoading = (param) => {
     this.setState({ loading: param });
+  }
+
+  setAudioVolume = () => {
+    const volume = document.querySelectorAll('#music-audio');
+    volume.forEach((item) => {
+      item.volume = 0.5;
+    });
   }
 
   showFavorites = async () => {
@@ -53,6 +61,7 @@ class MusicCard extends React.Component {
       await removeSong(data);
       this.setState({ loading: false, checked: false });
     }
+    this.showFavorites();
   }
 
   render() {
@@ -61,33 +70,36 @@ class MusicCard extends React.Component {
     const { loading, checked } = this.state;
     return (
       <div>
-        {loading ? <Loading /> : (
-          <div className="music-card-container">
-            <p>{trackName}</p>
-            <audio data-testid="audio-component" src={ previewUrl } controls>
-              <track kind="captions" />
-              O seu navegador não suporta o elemento
-              <code>audio</code>
-              .
-            </audio>
-            {loading ? <Loading /> : (
-              <label htmlFor={ trackId } className="checkbox-music">
-                <span className="visually-hidden">Favorita</span>
-                {checked ? (<img src={ svg1 } alt="teste" />) : (
-                  <img src={ svg } alt="teste" />
-                )}
-                <input
-                  name="favorita"
-                  id={ trackId }
-                  data-testid={ `checkbox-music-${trackId}` }
-                  type="checkbox"
-                  checked={ checked }
-                  onChange={ this.handleCheckboxChange }
-                />
-              </label>
-            )}
-          </div>
-        )}
+        <div className="music-card-container">
+          <p>{trackName}</p>
+          <audio
+            data-testid="audio-component"
+            src={ previewUrl }
+            id="music-audio"
+            controls
+          >
+            <track kind="captions" />
+            O seu navegador não suporta o elemento
+            <code>audio</code>
+            .
+          </audio>
+          {loading ? <Loading /> : (
+            <label htmlFor={ trackId } className="checkbox-music">
+              <span className="visually-hidden">Favorita</span>
+              {checked ? (<img src={ svg1 } alt="teste" />) : (
+                <img src={ svg } alt="teste" />
+              )}
+              <input
+                name="favorita"
+                id={ trackId }
+                data-testid={ `checkbox-music-${trackId}` }
+                type="checkbox"
+                checked={ checked }
+                onChange={ this.handleCheckboxChange }
+              />
+            </label>
+          )}
+        </div>
       </div>
     );
   }

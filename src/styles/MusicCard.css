@@ -1,13 +1,14 @@
 .music-card-container {
   align-items: center;
+  border-bottom: 1px solid #d9d9d9;
   display: flex;
-  margin-right: 20px;
   width: auto;
 }
 
 .checkbox-music {
   cursor: pointer;
   position: relative;
+  width: 50px;
 }
 
 .checkbox-music input {

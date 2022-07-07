@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import PropType from 'prop-types';
 import { getUser } from '../services/userAPI';
 import Loading from './Loading';
 import '../styles/Header.css';
@@ -11,11 +12,24 @@ class Header extends React.Component {
     this.state = {
       username: {},
       loading: true,
+      location: '',
     };
   }
 
   componentDidMount() {
     this.getUserName();
+  }
+
+  componentDidUpdate() {
+    this.setPathState();
+  }
+
+  setPathState = () => {
+    const { location } = this.props;
+    const { pathname } = location;
+    setTimeout(() => {
+      this.setState({ location: pathname });
+    }, 100);
   }
 
   getUserName = async () => {
@@ -27,7 +41,8 @@ class Header extends React.Component {
   }
 
   render() {
-    const { username, loading } = this.state;
+    const { username, loading, location } = this.state;
+    const activeClass = 'link active';
     return (
       <header data-testid="header-component">
         { loading ? <Loading /> : (
@@ -58,21 +73,21 @@ class Header extends React.Component {
               <Link
                 to="/search"
                 data-testid="link-to-search"
-                className="link"
+                className={ location === '/search' ? activeClass : 'link' }
               >
                 Pesquisar
               </Link>
               <Link
                 to="/favorites"
                 data-testid="link-to-favorites"
-                className="link"
+                className={ location === '/favorites' ? activeClass : 'link' }
               >
                 Favoritos
               </Link>
               <Link
                 to="/profile"
                 data-testid="link-to-profile"
-                className="link"
+                className={ location === '/profile' ? activeClass : 'link' }
               >
                 Perfil
               </Link>
@@ -82,5 +97,9 @@ class Header extends React.Component {
     );
   }
 }
+
+Header.propTypes = {
+  location: PropType.objectOf(PropType.any).isRequired,
+};
 
 export default Header;

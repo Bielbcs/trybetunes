@@ -1,6 +1,6 @@
 .header-container {
   align-items: center;
-  background-color: green;
+  background-color: #198754;
   color: white;
   display: flex;
   flex: 2;
@@ -8,6 +8,7 @@
   justify-content: space-evenly;
   padding-left: 15px;
   padding-right: 15px;
+  position: fixed;
   width: 100%;
 }
 
