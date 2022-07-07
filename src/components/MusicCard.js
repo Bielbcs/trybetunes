@@ -71,7 +71,7 @@ class MusicCard extends React.Component {
     return (
       <div>
         <div className="music-card-container">
-          <p>{trackName}</p>
+          <p className="track-name">{trackName}</p>
           <audio
             data-testid="audio-component"
             src={ previewUrl }

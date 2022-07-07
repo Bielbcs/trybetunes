@@ -1,0 +1,32 @@
+.page-profile-edit-container {
+  align-items: center;
+  background-color: #d9d9d9;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  padding-top: 50px;
+  width: 100%;
+}
+
+.profile-edit-form {
+  background-color: aliceblue;
+  border: 1px solid #198754;
+  border-radius: 15px;
+  box-shadow: 3px 3px 3px gray;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  padding: 50px;
+  width: 400px;
+}
+
+.profile-edit-form h2 {
+  border-bottom: 1px solid #d9d9d9;
+  color: #198754;
+  padding-bottom: 20px;
+}
+
+.profile-edit-btn {
+  margin-bottom: 0;
+  margin-top: 20px;
+}

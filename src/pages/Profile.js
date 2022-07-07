@@ -20,6 +20,11 @@ class Profile extends React.Component {
     this.getUserData();
   }
 
+  onErrorFunc(e) {
+    console.log('teste');
+    e.target.src = 'https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar.png';
+  }
+
   getUserData = async () => {
     this.setState({ loading: true });
     const result = await getUser();
@@ -40,15 +45,32 @@ class Profile extends React.Component {
         {loading ? <Loading /> : (
           <div className="profile-container">
             <div className="image-profile-container">
-              <img src={ image } alt={ name } data-testid="profile-image" />
-              <Link to="/profile/edit">Editar perfil</Link>
+              <div className="only-image-container">
+                <img
+                  src={ image || 'https://www.auctus.com.br/wp-content/uploads/2017/09/sem-imagem-avatar.png' }
+                  alt="Foto inválida"
+                  data-testid="profile-image"
+                  className="profile-image"
+                  onError={ (e) => this.onErrorFunc(e) }
+                />
+              </div>
+              <Link
+                to="/profile/edit"
+                className="btn btn-success"
+              >
+                Editar perfil
+              </Link>
             </div>
             <b>Nome:</b>
             <p>{ name }</p>
             <b>E-mail:</b>
-            <p>{ email }</p>
+            {email ? (
+              <p>{ email }</p>
+            ) : <p><i>Vazio</i></p>}
             <b>Descrição:</b>
-            <p>{ description }</p>
+            { description ? (
+              <p>{ description }</p>
+            ) : <p><i>Vazio</i></p>}
           </div>
         )}
       </div>

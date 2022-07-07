@@ -21,6 +21,7 @@
 }
 
 .track-name {
+  font-size: smaller;
   text-align: center;
   width: 25%;
 }
