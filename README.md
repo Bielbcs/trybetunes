@@ -32,7 +32,11 @@ https://trybetunes-orcin.vercel.app/
 
 ### Preview do projeto 💻
 
-
+<div>
+  <img alt="print1" src="./images/print1.png" />
+  <img alt="print2" src="./images/print2.png" />
+  <img alt="print2" src="./images/print3.png" />
+</div>
 
 <details>
   <summary><h3>Como rodar localmente 👨‍💻</h3></summary></br>
