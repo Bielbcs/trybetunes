@@ -1,7 +1,10 @@
 .search-form-container {
   align-items: center;
+  background-attachment: fixed;
+  background-image: url('https://img.freepik.com/fotos-gratis/uma-jovem-estudante-bonita-esperando-um-carro-de-taxi-e-ouvindo-musica_321831-684.jpg?w=2000');
+  background-size: cover;
   display: flex;
-  height: 50vh;
+  height: 100vh;
   justify-content: center;
   width: 100%;
 }

@@ -35,7 +35,6 @@ class Search extends React.Component {
 
   render() {
     const { search, albumList, loading, searched, prevState } = this.state;
-    const randomNumber = 1000;
     return (
       <div data-testid="page-search" className="search-general-container">
         {loading ? <Loading /> : (
@@ -64,7 +63,7 @@ class Search extends React.Component {
           </form>
         )}
         {(searched && !loading && albumList.length > 0) && (
-          <div>
+          <div className="album-list">
             <p>
               Resultado de álbuns de:
               {' '}
@@ -73,7 +72,7 @@ class Search extends React.Component {
             <div className="albums-list-container">
               {albumList.map((item) => (<AlbumCard
                 data={ item }
-                key={ Math.random() * randomNumber }
+                key={ item.collectionId }
               />))}
             </div>
           </div>

@@ -28,7 +28,7 @@ class MusicCard extends React.Component {
   setAudioVolume = () => {
     const volume = document.querySelectorAll('#music-audio');
     volume.forEach((item) => {
-      item.volume = 0.5;
+      item.volume = 0.05;
     });
   }
 

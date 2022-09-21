@@ -14,6 +14,10 @@ class FavoriteMusic extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.setAudioVolume();
+  }
+
   getExactFavorite = ({ target }) => {
     const { favorites } = this.props;
     const name = parseInt(target.name, 10);
@@ -27,6 +31,13 @@ class FavoriteMusic extends React.Component {
     await removeSong(result);
     await getFavorites();
     this.setState({ loading: false });
+  }
+
+  setAudioVolume = () => {
+    const volume = document.querySelectorAll('#music-audio');
+    volume.forEach((item) => {
+      item.volume = 0.05;
+    });
   }
 
   render() {
@@ -45,6 +56,7 @@ class FavoriteMusic extends React.Component {
             data-testid="audio-component"
             src={ previewUrl }
             controls
+            id="music-audio"
           >
             <track kind="captions" />
             O seu navegador não suporta o elemento
